@@ -1,0 +1,83 @@
+const alphabet = [
+	"A",
+	"B",
+	"C",
+	"D",
+	"E",
+	"F",
+	"G",
+	"H",
+	"I",
+	"J",
+	"K",
+	"L",
+	"M",
+	"N",
+	"O",
+	"P",
+	"Q",
+	"R",
+	"S",
+	"T",
+	"U",
+	"V",
+	"W",
+	"X",
+	"Y",
+	"Z",
+];
+
+const arrayShift = (array) => {
+	array.push(array.shift());
+	return array;
+};
+
+// Create Tabula Recta array
+const createTabulaRecta = () => {
+	const tabulaRecta = new Array(alphabet.length);
+	tabulaRecta[0] = alphabet;
+
+	alphabet.forEach((letter, index) => {
+		if (index === 0) return;
+
+		// Get previous row and shift forward by one letter
+		const previousRow = [...tabulaRecta[index - 1]];
+		const shiftedRow = arrayShift(previousRow);
+		tabulaRecta[index] = shiftedRow;
+	});
+
+	return tabulaRecta;
+};
+
+export const tabulaRecta = createTabulaRecta();
+
+// Initialize keyword to match encrypt/decrypt string length
+export const initializeKeyword = (plain, keyword) =>
+	keyword.repeat(Math.floor(plain.length / keyword.length)) +
+	keyword.substring(0, plain.length % keyword.length);
+
+// Encrypt
+export const encrypt = (plain, initializedKeyword) => {
+	const plainStringArray = plain.split("");
+
+	const encryptedText = plainStringArray.map((letter, i) => {
+		const plainIndex = alphabet.indexOf(letter);
+		const keyIndex = alphabet.indexOf(initializedKeyword[i]);
+		return tabulaRecta[plainIndex][keyIndex];
+	});
+
+	return encryptedText.join("");
+};
+
+// Decrypt
+export const decrypt = (encrypted, initializedKeyword) => {
+	const encryptedStringArray = encrypted.split("");
+
+	const decryptedText = encryptedStringArray.map((letter, i) => {
+		const keyRowIndex = alphabet.indexOf(initializedKeyword[i]);
+		const plainLetterIndex = tabulaRecta[keyRowIndex].indexOf(letter);
+		return alphabet[plainLetterIndex];
+	});
+
+	return decryptedText.join("");
+};
