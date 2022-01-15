@@ -1,59 +1,61 @@
-import { useState } from "react";
-import { tabulaRecta, initializeKeyword, encrypt, decrypt } from "./utils";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import { tabulaRecta, initializeKeyword, encrypt } from "./utils";
+import Input from "./components/Input";
 
 const App = () => {
 	const [plainText, setPlainText] = useState("SUPERSECRETMESSAGE");
 	const [keyword, setKeyword] = useState("PASSCODE");
 	const [result, setResult] = useState("");
-	let initializedKeyword;
+	const [step, setStep] = useState(0);
 
-	const handleKeyPress = (event) => {
-		// Backspace, Tab, Enter, Shift, Arrow left, Arrow right
-		const permittedSpecialKeys = [8, 9, 13, 16, 37, 39];
-
-		if (permittedSpecialKeys.includes(event.keyCode)) return;
-
-		// Only A-Z
-		if (event.keyCode < 65 || event.keyCode > 90) {
-			event.preventDefault();
-		}
-	};
-
-	const handleSubmit = (event) => {
-		event.preventDefault();
+	useEffect(() => {
+		let initializedKeyword;
 
 		if (keyword.length > 0) {
 			initializedKeyword = initializeKeyword(plainText, keyword);
 			setResult(encrypt(plainText, initializedKeyword));
 		}
+	}, [plainText, keyword]);
+
+	const handleChange = (event, setter) => {
+		setter(event.target.value.toUpperCase());
+		setStep(0);
 	};
+
+	const visibleResult = result.split("").slice(0, step);
 
 	return (
 		<>
-			<h1>Visual Vigenère Cipher</h1>
-			<form onSubmit={handleSubmit}>
-				<label>
+			<Header>
+				<h1>Visual Vigenère Cipher</h1>
+				<Label>
 					Text
-					<input
+					<Input
 						value={plainText}
-						onChange={(event) =>
-							setPlainText(event.target.value.toUpperCase())
-						}
-						onKeyDown={handleKeyPress}
+						onChange={(event) => handleChange(event, setPlainText)}
+						setStep={setStep}
 					/>
-				</label>
-				<label>
+				</Label>
+				<Label>
 					Keyword
-					<input
+					<Input
 						value={keyword}
-						onChange={(event) =>
-							setKeyword(event.target.value.toUpperCase())
-						}
-						onKeyDown={handleKeyPress}
+						onChange={(event) => handleChange(event, setKeyword)}
+						setStep={setStep}
 					/>
-				</label>
-				<input type="submit" value="Submit" />
-			</form>
+				</Label>
+				<Label>
+					<input
+						type="range"
+						min="0"
+						max={plainText.length}
+						value={step}
+						onChange={(event) => setStep(event.target.value)}
+						step="1"
+					/>
+				</Label>
+			</Header>
 
 			<table>
 				<tbody>
@@ -70,10 +72,23 @@ const App = () => {
 			</table>
 
 			<p>
-				Encrypted: <strong>{result}</strong>
+				Encrypted: <strong>{visibleResult}</strong>
 			</p>
 		</>
 	);
 };
+
+const Header = styled.header`
+	display: flex;
+	flex-direction: column;
+`;
+
+const Label = styled.label`
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+	font-size: 0.875rem;
+	text-transform: uppercase;
+`;
 
 export default App;
