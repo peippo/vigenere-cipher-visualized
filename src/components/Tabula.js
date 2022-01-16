@@ -65,7 +65,7 @@ const Table = styled.table`
 			`calc(${props.indicatorColumn + 1} * ${props.theme.cellSize})`};
 		width: ${(props) => props.theme.cellSize};
 		height: ${(props) => props.theme.cellSize};
-		border: 2px solid red;
+		border: 2px solid ${(props) => props.theme.resultHighlight};
 		transform: scale(1.5);
 		border-radius: 1000px;
 		transition: left 0.15s, top 0.15s;
@@ -113,7 +113,7 @@ const HeaderCell = styled.th`
 
 const ColumnHeaderCell = styled(HeaderCell)`
 	background-color: ${(props) =>
-		props.isCurrent ? props.theme.sourceHighlight : "transparent"};
+		props.isCurrent ? props.theme.keyHighlight : "transparent"};
 
 	${(props) =>
 		props.isCurrent &&
@@ -128,7 +128,7 @@ const ColumnHeaderCell = styled(HeaderCell)`
 
 const RowHeaderCell = styled(HeaderCell)`
 	background-color: ${(props) =>
-		props.isCurrent ? props.theme.keyHighlight : "transparent"};
+		props.isCurrent ? props.theme.sourceHighlight : "transparent"};
 
 	${(props) =>
 		props.isCurrent &&

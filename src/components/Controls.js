@@ -36,14 +36,16 @@ const Controls = ({ result, setResult, step, setStep }) => {
 						value={plainText}
 						onChange={(event) => handleChange(event, setPlainText)}
 						contentType="source"
+						step={step}
 					/>
 				</Label>
 				<Label>
-					Keyword
+					Encryption key
 					<Input
 						value={keyword}
 						onChange={(event) => handleChange(event, setKeyword)}
 						contentType="key"
+						step={step}
 					/>
 				</Label>
 				<Label>
