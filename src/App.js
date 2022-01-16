@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { tabulaRecta, initializeKeyword, encrypt } from "./utils";
+import { GlobalStyles, lightTheme, darkTheme } from "./theme";
 import Input from "./components/Input";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 const App = () => {
 	const [plainText, setPlainText] = useState("SUPERSECRETMESSAGE");
 	const [keyword, setKeyword] = useState("PASSCODE");
 	const [result, setResult] = useState("");
 	const [step, setStep] = useState(0);
+	const [theme, setTheme] = useState("light");
+	const isDarkTheme = theme === "dark";
 
 	useEffect(() => {
 		let initializedKeyword;
@@ -26,7 +30,10 @@ const App = () => {
 	const visibleResult = result.split("").slice(0, step);
 
 	return (
-		<>
+		<ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+			<GlobalStyles />
+			<ThemeSwitcher isDarkTheme={isDarkTheme} setTheme={setTheme} />
+
 			<Header>
 				<h1>Visual Vigenère Cipher</h1>
 				<Label>
@@ -74,7 +81,7 @@ const App = () => {
 			<p>
 				Encrypted: <strong>{visibleResult}</strong>
 			</p>
-		</>
+		</ThemeProvider>
 	);
 };
 
