@@ -1,4 +1,4 @@
-const alphabet = [
+export const alphabet = [
 	"A",
 	"B",
 	"C",
@@ -60,13 +60,17 @@ export const initializeKeyword = (plain, keyword) =>
 export const encrypt = (plain, initializedKeyword) => {
 	const plainStringArray = plain.split("");
 
-	const encryptedText = plainStringArray.map((letter, i) => {
+	const encryptedText = [];
+	const indices = [{ column: 0, row: 0 }];
+
+	plainStringArray.forEach((letter, i) => {
 		const plainIndex = alphabet.indexOf(letter);
 		const keyIndex = alphabet.indexOf(initializedKeyword[i]);
-		return tabulaRecta[plainIndex][keyIndex];
+		indices.push({ column: plainIndex, row: keyIndex });
+		encryptedText.push(tabulaRecta[plainIndex][keyIndex]);
 	});
 
-	return encryptedText.join("");
+	return { string: encryptedText.join(""), indices: indices };
 };
 
 // Decrypt

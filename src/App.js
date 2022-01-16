@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
-import { tabulaRecta, initializeKeyword, encrypt } from "./utils";
+import styled, { ThemeProvider } from "styled-components";
+import { initializeKeyword, encrypt } from "./utils";
 import { GlobalStyles, lightTheme, darkTheme } from "./theme";
 import Input from "./components/Input";
+import Tabula from "./components/Tabula";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 
 const App = () => {
 	const [plainText, setPlainText] = useState("SUPERSECRETMESSAGE");
 	const [keyword, setKeyword] = useState("PASSCODE");
-	const [result, setResult] = useState("");
+	const [result, setResult] = useState();
 	const [step, setStep] = useState(0);
 	const [theme, setTheme] = useState("light");
 	const isDarkTheme = theme === "dark";
+	let visibleResult;
 
 	useEffect(() => {
 		let initializedKeyword;
@@ -27,7 +29,9 @@ const App = () => {
 		setStep(0);
 	};
 
-	const visibleResult = result.split("").slice(0, step);
+	if (result) {
+		visibleResult = result["string"].split("").slice(0, step);
+	}
 
 	return (
 		<ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
@@ -36,6 +40,7 @@ const App = () => {
 
 			<Header>
 				<h1>Visual Vigenère Cipher</h1>
+
 				<Label>
 					Text
 					<Input
@@ -64,19 +69,7 @@ const App = () => {
 				</Label>
 			</Header>
 
-			<table>
-				<tbody>
-					{tabulaRecta.map((rowArr, index) => {
-						return (
-							<tr key={index}>
-								{rowArr.map((letter) => {
-									return <td key={letter}>{letter}</td>;
-								})}
-							</tr>
-						);
-					})}
-				</tbody>
-			</table>
+			{result && <Tabula indices={result.indices} step={step} />}
 
 			<p>
 				Encrypted: <strong>{visibleResult}</strong>
