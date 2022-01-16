@@ -18,23 +18,25 @@ const generalStyles = {
 };
 
 export const lightTheme = {
-	body: "rgb(238, 232, 239)",
-	text: "rgb(68, 34, 62)",
-	bodyBorder: "rgb(255, 255, 255)",
-	sourceHighlight: "salmon",
-	keyHighlight: "palegreen",
-	resultHighlight: "lightcyan",
-	indicatorBar: "lightcyan",
+	body: "var(--color-body-light)",
+	text: "var(--color-text-light)",
+	bodyBorder: "var(--color-body-border-light)",
+	sourceHighlight: "var(--color-source-highlight-light)",
+	keyHighlight: "var(--color-key-highlight-light)",
+	resultHighlight: "var(--color-result-highlight-light)",
+	indicatorBar: "var(--color-indicator-bar-light)",
+	inputBorder: "var(--color-input-border-light)",
 	...generalStyles,
 };
 
 export const darkTheme = {
-	body: "rgb(23, 27, 30)",
-	text: "rgb(214, 194, 219)",
-	bodyBorder: "rgb(33, 37, 40)",
-	sourceHighlight: "darkred",
-	keyHighlight: "seagreen",
-	resultHighlight: "darkcyan",
-	indicatorBar: "darkcyan",
+	body: "var(--color-body-dark)",
+	text: "var(--color-text-dark)",
+	bodyBorder: "var(--color-body-border-dark)",
+	sourceHighlight: "var(--color-source-highlight-dark)",
+	keyHighlight: "var(--color-key-highlight-dark)",
+	resultHighlight: "var(--color-result-highlight-dark)",
+	indicatorBar: "var(--color-indicator-bar-dark)",
+	inputBorder: "var(--color-input-border-dark)",
 	...generalStyles,
 };

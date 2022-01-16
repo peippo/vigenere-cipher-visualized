@@ -1,6 +1,25 @@
 :root {
+	--heading-font-family: "IBM Plex Mono", monospace;
 	--heading-font-weight: 700;
 	--theme-color-primary: rgb(250, 130, 10);
+
+	--color-body-light: rgb(238, 232, 239);
+	--color-text-light: rgb(68, 34, 62);
+	--color-body-border-light: rgb(255, 255, 255);
+	--color-source-highlight-light: rgb(126, 255, 148);
+	--color-key-highlight-light: rgb(254, 255, 188);
+	--color-result-highlight-light: var(--theme-color-primary);
+	--color-indicator-bar-light: rgba(255, 255, 255, 0.5);
+	--color-input-border-light: rgba(0, 0, 0, 0.25);
+
+	--color-body-dark: rgb(23, 27, 30);
+	--color-text-dark: rgb(214, 194, 219);
+	--color-body-border-dark: rgb(33, 37, 40);
+	--color-source-highlight-dark: rgb(10, 106, 26);
+	--color-key-highlight-dark: rgb(110, 102, 0);
+	--color-result-highlight-dark: var(--theme-color-primary);
+	--color-indicator-bar-dark: rgb(45, 45, 45);
+	--color-input-border-dark: rgba(255, 255, 255, 0.4);
 }
 
 *,
@@ -17,7 +36,7 @@ body,
 
 body {
 	margin: 0;
-	font-family: "IBM Plex Mono", monospace;
+	font-family: var(--heading-font-family);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
