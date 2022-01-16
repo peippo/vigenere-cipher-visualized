@@ -1,3 +1,8 @@
+:root {
+	--heading-font-weight: 700;
+	--theme-color-primary: rgb(250, 130, 10);
+}
+
 *,
 *::before,
 *::after {
@@ -25,7 +30,6 @@ code {
 main {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 }
 

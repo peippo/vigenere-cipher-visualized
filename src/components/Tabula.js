@@ -53,7 +53,7 @@ const Table = styled.table`
 	position: relative;
 	border-spacing: 0;
 	text-align: center;
-	font-size: 16px;
+	font-size: 14px;
 	border-collapse: collapse;
 
 	&:after {
