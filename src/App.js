@@ -42,6 +42,7 @@ const Header = styled.header`
 const Heading = styled.h1`
 	color: var(--theme-color-primary);
 	text-align: center;
+	margin-top: 3rem;
 `;
 
 const Subtag = styled.span`
