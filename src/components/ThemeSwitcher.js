@@ -35,7 +35,6 @@ const Switch = styled.div`
 	padding: 5px 10px;
 	border-radius: 0 0 5px 5px;
 	background-color: ${(props) => props.theme.bodyBorder};
-	transition: background 0.2s ease-in;
 
 	&:hover,
 	&:focus {

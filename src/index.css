@@ -11,15 +11,17 @@
 	--color-result-highlight-light: var(--theme-color-primary);
 	--color-indicator-bar-light: rgba(255, 255, 255, 0.5);
 	--color-input-border-light: rgba(0, 0, 0, 0.25);
+	--color-slider-track-light: rgb(100, 100, 100);
 
-	--color-body-dark: rgb(23, 27, 30);
-	--color-text-dark: rgb(214, 194, 219);
-	--color-body-border-dark: rgb(33, 37, 40);
-	--color-source-highlight-dark: rgb(10, 106, 26);
-	--color-key-highlight-dark: rgb(110, 102, 0);
+	--color-body-dark: rgb(33, 37, 40);
+	--color-text-dark: rgb(210, 210, 210);
+	--color-body-border-dark: rgb(23, 27, 30);
+	--color-source-highlight-dark: rgb(43, 89, 0);
+	--color-key-highlight-dark: rgb(0, 70, 104);
 	--color-result-highlight-dark: var(--theme-color-primary);
-	--color-indicator-bar-dark: rgb(45, 45, 45);
-	--color-input-border-dark: rgba(255, 255, 255, 0.4);
+	--color-indicator-bar-dark: rgba(255, 255, 255, 0.1);
+	--color-input-border-dark: rgba(255, 255, 255, 0.2);
+	--color-slider-track-dark: rgb(80, 80, 80);
 }
 
 *,

@@ -4,7 +4,6 @@ export const GlobalStyles = createGlobalStyle`
     body {
         background: ${({ theme }) => theme.body};
         color: ${({ theme }) => theme.text};
-        transition: background 0.2s ease-in, color 0.2s ease-in, border 0.2s ease-in;
         border: 20px solid ${({ theme }) => theme.bodyBorder};
         padding: 1rem;
     }
@@ -15,6 +14,7 @@ const generalStyles = {
 	containerWidth: "540px", // Alphabet count * cellSize
 	inputCellSize: "36px",
 	rangeThumbSize: "18px",
+	themeColor: "var(--theme-color-primary)",
 };
 
 export const lightTheme = {
@@ -26,6 +26,7 @@ export const lightTheme = {
 	resultHighlight: "var(--color-result-highlight-light)",
 	indicatorBar: "var(--color-indicator-bar-light)",
 	inputBorder: "var(--color-input-border-light)",
+	sliderTrack: "var(--color-slider-track-light)",
 	...generalStyles,
 };
 
@@ -38,5 +39,6 @@ export const darkTheme = {
 	resultHighlight: "var(--color-result-highlight-dark)",
 	indicatorBar: "var(--color-indicator-bar-dark)",
 	inputBorder: "var(--color-input-border-dark)",
+	sliderTrack: "var(--color-slider-track-dark)",
 	...generalStyles,
 };

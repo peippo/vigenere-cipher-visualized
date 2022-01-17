@@ -117,8 +117,8 @@ const HeaderCell = styled.th`
 `;
 
 const ColumnHeaderCell = styled(HeaderCell)`
-	background-color: ${(props) =>
-		props.isCurrent ? props.theme.keyHighlight : "transparent"};
+	background-color: ${(props) => props.isCurrent && props.theme.keyHighlight};
+	border-bottom: 1px solid ${(props) => props.theme.inputBorder};
 
 	${(props) =>
 		props.isCurrent &&
@@ -133,7 +133,8 @@ const ColumnHeaderCell = styled(HeaderCell)`
 
 const RowHeaderCell = styled(HeaderCell)`
 	background-color: ${(props) =>
-		props.isCurrent ? props.theme.sourceHighlight : "transparent"};
+		props.isCurrent && props.theme.sourceHighlight};
+	border-right: 1px solid ${(props) => props.theme.inputBorder};
 
 	${(props) =>
 		props.isCurrent &&

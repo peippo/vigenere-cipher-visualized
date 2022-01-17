@@ -95,6 +95,13 @@ const Range = styled.input`
 	width: 100%;
 	width: ${(props) =>
 		`calc(var(--lengthCount) * ${props.theme.inputCellSize})`};
+	border-radius: 5px;
+	margin: 0.5rem 0 1rem;
+	background: none;
+
+	&:focus {
+		outline: none;
+	}
 
 	&::-webkit-slider-thumb {
 		-webkit-appearance: none;
@@ -107,14 +114,17 @@ const Range = styled.input`
 		margin-top: -6px;
 		position: relative;
 		border-radius: 5px;
+
+		&:hover {
+			cursor: ew-resize;
+		}
 	}
 
 	&::-webkit-slider-runnable-track {
 		width: 100%;
-		height: 5px;
+		height: 6px;
 		cursor: pointer;
-		box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-		background: white;
+		background-color: ${(props) => props.theme.sliderTrack};
 		border-radius: 20px;
 		border: 0;
 	}

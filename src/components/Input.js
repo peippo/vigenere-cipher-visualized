@@ -121,6 +121,24 @@ const StyledInput = styled.input`
 	text-indent: 11px;
 	text-transform: uppercase;
 	height: ${(props) => props.theme.inputCellSize};
+
+	&:focus {
+		outline: none;
+		border: 1px solid ${(props) => props.theme.themeColor};
+		background: ${(props) =>
+			`linear-gradient(to left, ${props.theme.themeColor} 1px, transparent 0)`};
+		background-size: ${(props) => props.theme.inputCellSize} 1px;
+	}
+
+	&::selection {
+		color: var(--theme-color-primary);
+	}
+
+	&:disabled {
+		&:hover {
+			cursor: not-allowed;
+		}
+	}
 `;
 
 export default Input;
