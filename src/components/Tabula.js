@@ -7,8 +7,11 @@ const Tabula = ({ indices, step }) => {
 	return (
 		<Table
 			currentStep={Number(step)}
-			indicatorRow={stepIndices.row}
-			indicatorColumn={stepIndices.column}
+			style={{
+				"--currentStep": Number(step),
+				"--indicatorRow": stepIndices.row + 1,
+				"--indicatorColumn": stepIndices.column + 1,
+			}}
 		>
 			<thead>
 				<tr>
@@ -19,7 +22,9 @@ const Tabula = ({ indices, step }) => {
 								isCurrent={stepIndices.row === index}
 								key={letter}
 								scope="col"
-								indicatorHeight={stepIndices.column}
+								style={{
+									"--indicatorHeight": stepIndices.column + 1,
+								}}
 							>
 								{letter}
 							</ColumnHeaderCell>
@@ -34,7 +39,9 @@ const Tabula = ({ indices, step }) => {
 							<RowHeaderCell
 								isCurrent={stepIndices.column === index}
 								scope="row"
-								indicatorWidth={stepIndices.row}
+								style={{
+									"--indicatorWidth": stepIndices.row + 1,
+								}}
 							>
 								{alphabet[index]}
 							</RowHeaderCell>
@@ -59,10 +66,8 @@ const Table = styled.table`
 	&:after {
 		content: "";
 		position: absolute;
-		left: ${(props) =>
-			`calc(${props.indicatorRow + 1} * ${props.theme.cellSize})`};
-		top: ${(props) =>
-			`calc(${props.indicatorColumn + 1} * ${props.theme.cellSize})`};
+		left: calc(var(--indicatorRow) * ${(props) => props.theme.cellSize});
+		top: calc(var(--indicatorColumn) * ${(props) => props.theme.cellSize});
 		width: ${(props) => props.theme.cellSize};
 		height: ${(props) => props.theme.cellSize};
 		border: 2px solid ${(props) => props.theme.resultHighlight};
@@ -121,7 +126,7 @@ const ColumnHeaderCell = styled(HeaderCell)`
 			&:after {
 				width: ${(props) => props.theme.cellSize};
 				height: ${(props) =>
-					`calc(${props.indicatorHeight + 1} * ${props.theme.cellSize})`};
+					`calc(var(--indicatorHeight) * ${props.theme.cellSize})`};
 			}
 		`}
 `;
@@ -136,7 +141,7 @@ const RowHeaderCell = styled(HeaderCell)`
 			&:after {
 				height: ${(props) => props.theme.cellSize};
 				width: ${(props) =>
-					`calc(${props.indicatorWidth + 1} * ${props.theme.cellSize})`};
+					`calc(var(--indicatorWidth) * ${props.theme.cellSize})`};
 			}
 		`}
 `;

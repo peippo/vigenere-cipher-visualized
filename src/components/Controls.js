@@ -62,10 +62,12 @@ const Controls = ({ result, setResult, step, setStep }) => {
 					type="range"
 					min="0"
 					max={plainText.length}
-					lengthCount={plainText.length}
 					value={step}
 					onChange={(event) => setStep(event.target.value)}
 					step="1"
+					style={{
+						"--lengthCount": plainText.length + 1,
+					}}
 				/>
 			</Label>
 		</Container>
@@ -92,7 +94,7 @@ const Range = styled.input`
 	-webkit-appearance: none;
 	width: 100%;
 	width: ${(props) =>
-		`calc(${props.lengthCount + 1} * ${props.theme.inputCellSize})`};
+		`calc(var(--lengthCount) * ${props.theme.inputCellSize})`};
 
 	&::-webkit-slider-thumb {
 		-webkit-appearance: none;
