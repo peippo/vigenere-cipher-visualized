@@ -23,7 +23,7 @@ const Tabula = ({ indices, step }) => {
 								key={letter}
 								scope="col"
 								style={{
-									"--indicatorHeight": stepIndices.column + 1,
+									"--indicatorHeight": stepIndices.column,
 								}}
 							>
 								{letter}
@@ -40,7 +40,7 @@ const Tabula = ({ indices, step }) => {
 								isCurrent={stepIndices.column === index}
 								scope="row"
 								style={{
-									"--indicatorWidth": stepIndices.row + 1,
+									"--indicatorWidth": stepIndices.row,
 								}}
 							>
 								{alphabet[index]}
@@ -63,6 +63,11 @@ const Table = styled.table`
 	font-size: 14px;
 	border-collapse: collapse;
 
+	& * {
+		position: relative;
+		z-index: 1;
+	}
+
 	&:after {
 		content: "";
 		position: absolute;
@@ -74,6 +79,7 @@ const Table = styled.table`
 		transform: scale(1.5);
 		border-radius: 1000px;
 		transition: left 0.15s, top 0.15s;
+		z-index: 1;
 	}
 
 	${(props) =>
@@ -110,9 +116,6 @@ const HeaderCell = styled.th`
 		content: "";
 		background-color: ${(props) => props.theme.indicatorBar};
 		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: -1;
 	}
 `;
 
@@ -124,6 +127,8 @@ const ColumnHeaderCell = styled(HeaderCell)`
 		props.isCurrent &&
 		css`
 			&:after {
+				top: 100%;
+				left: 0;
 				width: ${(props) => props.theme.cellSize};
 				height: ${(props) =>
 					`calc(var(--indicatorHeight) * ${props.theme.cellSize})`};
@@ -140,6 +145,8 @@ const RowHeaderCell = styled(HeaderCell)`
 		props.isCurrent &&
 		css`
 			&:after {
+				top: 0;
+				left: 100%;
 				height: ${(props) => props.theme.cellSize};
 				width: ${(props) =>
 					`calc(var(--indicatorWidth) * ${props.theme.cellSize})`};

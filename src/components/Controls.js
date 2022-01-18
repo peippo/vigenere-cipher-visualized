@@ -92,7 +92,6 @@ const InputsContainer = styled.div`
 
 const Range = styled.input`
 	-webkit-appearance: none;
-	width: 100%;
 	width: ${(props) =>
 		`calc(var(--lengthCount) * ${props.theme.inputCellSize})`};
 	border-radius: 5px;

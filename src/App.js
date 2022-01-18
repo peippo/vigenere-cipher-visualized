@@ -20,19 +20,28 @@ const App = () => {
 				<Heading>
 					Vigenère Cipher <Subtag>visualized</Subtag>
 				</Heading>
+			</Header>
 
+			<Container>
 				<Controls
 					result={result}
 					setResult={setResult}
 					step={step}
 					setStep={setStep}
 				/>
-			</Header>
 
-			{result && <Tabula indices={result.indices} step={step} />}
+				{result && <Tabula indices={result.indices} step={step} />}
+			</Container>
 		</ThemeProvider>
 	);
 };
+
+const Container = styled.article`
+	background-color: ${(props) => props.theme.body};
+	border: 1px solid ${(props) => props.theme.bodyStripe};
+	padding: 1rem;
+	border-radius: 20px;
+`;
 
 const Header = styled.header`
 	display: flex;

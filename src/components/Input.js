@@ -103,7 +103,7 @@ const Wrapper = styled.div`
 			props.contentType === "source"
 				? props.theme.sourceHighlight
 				: props.theme.keyHighlight};
-		z-index: -1;
+		z-index: 0;
 		transition: left 0.15s;
 	}
 `;
@@ -121,6 +121,15 @@ const StyledInput = styled.input`
 	text-indent: 11px;
 	text-transform: uppercase;
 	height: ${(props) => props.theme.inputCellSize};
+	position: relative;
+	z-index: 1;
+
+	&:hover:not(:disabled):not(:focus) {
+		border: 1px solid ${(props) => props.theme.inputBorderHover};
+		background: ${(props) =>
+			`linear-gradient(to left, ${props.theme.inputBorderHover} 1px, transparent 0)`};
+		background-size: ${(props) => props.theme.inputCellSize} 1px;
+	}
 
 	&:focus {
 		outline: none;

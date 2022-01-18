@@ -4,6 +4,7 @@
 	--theme-color-primary: rgb(250, 130, 10);
 
 	--color-body-light: rgb(238, 232, 239);
+	--color-body-stripe-light: rgb(242, 236, 243);
 	--color-text-light: rgb(68, 34, 62);
 	--color-body-border-light: rgb(255, 255, 255);
 	--color-source-highlight-light: rgb(126, 255, 148);
@@ -11,9 +12,12 @@
 	--color-result-highlight-light: var(--theme-color-primary);
 	--color-indicator-bar-light: rgba(255, 255, 255, 0.5);
 	--color-input-border-light: rgba(0, 0, 0, 0.25);
+	--color-input-border-hover-light: rgba(0, 0, 0, 0.5);
+	--color-input-background-light: rgba(255, 255, 255, 1);
 	--color-slider-track-light: rgb(100, 100, 100);
 
 	--color-body-dark: rgb(33, 37, 40);
+	--color-body-stripe-dark: rgb(29, 33, 36);
 	--color-text-dark: rgb(210, 210, 210);
 	--color-body-border-dark: rgb(23, 27, 30);
 	--color-source-highlight-dark: rgb(43, 89, 0);
@@ -21,6 +25,8 @@
 	--color-result-highlight-dark: var(--theme-color-primary);
 	--color-indicator-bar-dark: rgba(255, 255, 255, 0.1);
 	--color-input-border-dark: rgba(255, 255, 255, 0.2);
+	--color-input-border-hover-dark: rgba(255, 255, 255, 0.4);
+	--color-input-background-dark: rgba(0, 0, 0, 1);
 	--color-slider-track-dark: rgb(80, 80, 80);
 }
 
