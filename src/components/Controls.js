@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { initializeKeyword, encrypt } from "../utils";
+import { initializeKeyword, cipher } from "../utils";
 import Input from "./Input";
 
-const Controls = ({ result, setResult, step, setStep }) => {
-	const [plainText, setPlainText] = useState("SECRETMESSAGE");
+const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
+	const [sourceText, setSourceText] = useState("SECRETMESSAGE");
 	const [keyword, setKeyword] = useState("PASSCODE");
 	let visibleResult;
 
@@ -12,10 +12,10 @@ const Controls = ({ result, setResult, step, setStep }) => {
 		let initializedKeyword;
 
 		if (keyword.length > 0) {
-			initializedKeyword = initializeKeyword(plainText, keyword);
-			setResult(encrypt(plainText, initializedKeyword));
+			initializedKeyword = initializeKeyword(sourceText, keyword);
+			setResult(cipher[mode](sourceText, initializedKeyword));
 		}
-	}, [setResult, plainText, keyword]);
+	}, [setResult, sourceText, keyword, mode]);
 
 	if (result) {
 		visibleResult = result["string"].split("").slice(0, step);
@@ -27,14 +27,22 @@ const Controls = ({ result, setResult, step, setStep }) => {
 		setStep(0);
 	};
 
+	const changeMode = () => {
+		setSourceText(mode === "encrypt" ? result["string"] : "SECRETMESSAGE");
+		setMode(mode === "encrypt" ? "decrypt" : "encrypt");
+	};
+
 	return (
 		<Container>
 			<InputsContainer>
+				<button onClick={changeMode}>{mode}</button>
 				<Label>
-					Plain text
+					{mode === "encrypt"
+						? "Plain source text"
+						: "Encrypted source text"}
 					<Input
-						value={plainText}
-						onChange={(event) => handleChange(event, setPlainText)}
+						value={sourceText}
+						onChange={(event) => handleChange(event, setSourceText)}
 						contentType="source"
 						step={step}
 					/>
@@ -49,7 +57,7 @@ const Controls = ({ result, setResult, step, setStep }) => {
 					/>
 				</Label>
 				<Label>
-					Encrypted text
+					{mode === "encrypt" ? "Encrypted text" : "Decrypted text"}
 					<Input
 						value={visibleResult ? visibleResult : ""}
 						contentType="result"
@@ -61,12 +69,12 @@ const Controls = ({ result, setResult, step, setStep }) => {
 				<Range
 					type="range"
 					min="0"
-					max={plainText.length}
+					max={sourceText.length}
 					value={step}
 					onChange={(event) => setStep(event.target.value)}
 					step="1"
 					style={{
-						"--lengthCount": plainText.length + 1,
+						"--lengthCount": sourceText.length + 1,
 					}}
 				/>
 			</Label>

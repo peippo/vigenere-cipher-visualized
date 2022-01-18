@@ -9,6 +9,7 @@ const App = () => {
 	const [result, setResult] = useState();
 	const [step, setStep] = useState(0);
 	const [theme, setTheme] = useState("light");
+	const [mode, setMode] = useState("encrypt");
 	const isDarkTheme = theme === "dark";
 
 	return (
@@ -28,9 +29,13 @@ const App = () => {
 					setResult={setResult}
 					step={step}
 					setStep={setStep}
+					mode={mode}
+					setMode={setMode}
 				/>
 
-				{result && <Tabula indices={result.indices} step={step} />}
+				{result && (
+					<Tabula indices={result.indices} step={step} mode={mode} />
+				)}
 			</Container>
 		</ThemeProvider>
 	);

@@ -56,32 +56,35 @@ export const initializeKeyword = (plain, keyword) =>
 	keyword.repeat(Math.floor(plain.length / keyword.length)) +
 	keyword.substring(0, plain.length % keyword.length);
 
-// Encrypt
-export const encrypt = (plain, initializedKeyword) => {
-	const plainStringArray = plain.split("");
+export const cipher = {
+	encrypt: (plain, initializedKeyword) => {
+		const plainStringArray = plain.split("");
 
-	const encryptedText = [];
-	const indices = [{ column: 0, row: 0 }];
+		const encryptedText = [];
+		const indices = [{ column: 0, row: 0 }];
 
-	plainStringArray.forEach((letter, i) => {
-		const plainIndex = alphabet.indexOf(letter);
-		const keyIndex = alphabet.indexOf(initializedKeyword[i]);
-		indices.push({ column: plainIndex, row: keyIndex });
-		encryptedText.push(tabulaRecta[plainIndex][keyIndex]);
-	});
+		plainStringArray.forEach((letter, i) => {
+			const plainIndex = alphabet.indexOf(letter);
+			const keyIndex = alphabet.indexOf(initializedKeyword[i]);
+			indices.push({ column: plainIndex, row: keyIndex });
+			encryptedText.push(tabulaRecta[plainIndex][keyIndex]);
+		});
 
-	return { string: encryptedText.join(""), indices: indices };
-};
+		return { string: encryptedText.join(""), indices: indices };
+	},
+	decrypt: (encrypted, initializedKeyword) => {
+		const encryptedStringArray = encrypted.split("");
 
-// Decrypt
-export const decrypt = (encrypted, initializedKeyword) => {
-	const encryptedStringArray = encrypted.split("");
+		const decryptedText = [];
+		const indices = [{ column: 0, row: 0 }];
 
-	const decryptedText = encryptedStringArray.map((letter, i) => {
-		const keyRowIndex = alphabet.indexOf(initializedKeyword[i]);
-		const plainLetterIndex = tabulaRecta[keyRowIndex].indexOf(letter);
-		return alphabet[plainLetterIndex];
-	});
+		encryptedStringArray.forEach((letter, i) => {
+			const keyRowIndex = alphabet.indexOf(initializedKeyword[i]);
+			const plainLetterIndex = tabulaRecta[keyRowIndex].indexOf(letter);
+			indices.push({ column: keyRowIndex, row: plainLetterIndex });
+			decryptedText.push(alphabet[plainLetterIndex]);
+		});
 
-	return decryptedText.join("");
+		return { string: decryptedText.join(""), indices: indices };
+	},
 };

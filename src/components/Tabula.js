@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
 import { tabulaRecta, alphabet } from "../utils";
 
-const Tabula = ({ indices, step }) => {
+const Tabula = ({ indices, step, mode }) => {
 	const stepIndices = indices[step];
 
 	return (
 		<Table
+			mode={mode}
 			currentStep={Number(step)}
 			style={{
 				"--currentStep": Number(step),
@@ -20,6 +21,7 @@ const Tabula = ({ indices, step }) => {
 						return (
 							<ColumnHeaderCell
 								isCurrent={stepIndices.row === index}
+								mode={mode}
 								key={letter}
 								scope="col"
 								style={{
@@ -38,6 +40,7 @@ const Tabula = ({ indices, step }) => {
 						<Row key={index}>
 							<RowHeaderCell
 								isCurrent={stepIndices.column === index}
+								mode={mode}
 								scope="row"
 								style={{
 									"--indicatorWidth": stepIndices.row,
@@ -68,24 +71,51 @@ const Table = styled.table`
 		z-index: 1;
 	}
 
-	&:after {
-		content: "";
-		position: absolute;
-		left: calc(var(--indicatorRow) * ${(props) => props.theme.cellSize});
-		top: calc(var(--indicatorColumn) * ${(props) => props.theme.cellSize});
-		width: ${(props) => props.theme.cellSize};
-		height: ${(props) => props.theme.cellSize};
-		border: 2px solid ${(props) => props.theme.resultHighlight};
-		transform: scale(1.5);
-		border-radius: 1000px;
-		transition: left 0.15s, top 0.15s;
-		z-index: 1;
-	}
+	${(props) =>
+		props.mode === "encrypt" &&
+		css`
+			&:after {
+				content: "";
+				position: absolute;
+				left: calc(
+					var(--indicatorRow) * ${(props) => props.theme.cellSize}
+				);
+				top: calc(
+					var(--indicatorColumn) * ${(props) => props.theme.cellSize}
+				);
+				width: ${(props) => props.theme.cellSize};
+				height: ${(props) => props.theme.cellSize};
+				border: 2px solid ${(props) => props.theme.resultHighlight};
+				transform: scale(1.5);
+				border-radius: 1000px;
+				transition: left 0.15s, top 0.15s;
+				z-index: 1;
+			}
+		`};
+
+	${(props) =>
+		props.mode === "decrypt" &&
+		css`
+			&:after {
+				content: "";
+				position: absolute;
+				left: calc(
+					var(--indicatorRow) * ${(props) => props.theme.cellSize}
+				);
+				top: calc(
+					var(--indicatorColumn) * ${(props) => props.theme.cellSize}
+				);
+				width: ${(props) => props.theme.cellSize};
+				height: ${(props) => props.theme.cellSize};
+				background-color: ${(props) => props.theme.sourceHighlight};
+			}
+		`};
 
 	${(props) =>
 		props.currentStep === 0 &&
 		css`
-			&:after {
+			&:after,
+			th:before {
 				display: none !important;
 			}
 
@@ -120,8 +150,33 @@ const HeaderCell = styled.th`
 `;
 
 const ColumnHeaderCell = styled(HeaderCell)`
-	background-color: ${(props) => props.isCurrent && props.theme.keyHighlight};
 	border-bottom: 1px solid ${(props) => props.theme.inputBorder};
+
+	${(props) =>
+		props.mode === "encrypt" &&
+		css`
+			background-color: ${(props) =>
+				props.isCurrent && props.theme.keyHighlight};
+		`};
+
+	${(props) =>
+		props.mode === "decrypt" &&
+		props.isCurrent &&
+		css`
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: ${(props) => props.theme.cellSize};
+				height: ${(props) => props.theme.cellSize};
+				border: 2px solid ${(props) => props.theme.resultHighlight};
+				transform: scale(1.5);
+				border-radius: 1000px;
+				transition: left 0.15s;
+				z-index: 1;
+			}
+		`};
 
 	${(props) =>
 		props.isCurrent &&
@@ -137,9 +192,21 @@ const ColumnHeaderCell = styled(HeaderCell)`
 `;
 
 const RowHeaderCell = styled(HeaderCell)`
-	background-color: ${(props) =>
-		props.isCurrent && props.theme.sourceHighlight};
 	border-right: 1px solid ${(props) => props.theme.inputBorder};
+
+	${(props) =>
+		props.mode === "encrypt" &&
+		css`
+			background-color: ${(props) =>
+				props.isCurrent && props.theme.sourceHighlight};
+		`};
+
+	${(props) =>
+		props.mode === "decrypt" &&
+		css`
+			background-color: ${(props) =>
+				props.isCurrent && props.theme.keyHighlight};
+		`};
 
 	${(props) =>
 		props.isCurrent &&
