@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { initializeKeyword, cipher } from "../utils";
 import Input from "./Input";
+import ModeToggle from "./ModeToggle";
 
 const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 	const [sourceText, setSourceText] = useState("SECRETMESSAGE");
@@ -27,15 +28,15 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 		setStep(0);
 	};
 
-	const changeMode = () => {
-		setSourceText(mode === "encrypt" ? result["string"] : "SECRETMESSAGE");
-		setMode(mode === "encrypt" ? "decrypt" : "encrypt");
+	const changeMode = (newMode) => {
+		setMode(newMode);
+		setSourceText(result["string"]);
 	};
 
 	return (
 		<Container>
 			<InputsContainer>
-				<button onClick={changeMode}>{mode}</button>
+				<ModeToggle mode={mode} changeMode={changeMode} />
 				<Label>
 					{mode === "encrypt"
 						? "Plain source text"

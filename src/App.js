@@ -54,14 +54,17 @@ const Header = styled.header`
 `;
 
 const Heading = styled.h1`
-	color: var(--theme-color-primary);
+	color: ${(props) => props.theme.text};
 	font-weight: var(--heading-font-weight);
 	text-align: center;
 	margin-top: 3rem;
+	margin-bottom: 0;
+	position: relative;
+	z-index: 5;
 `;
 
 const Subtag = styled.span`
-	color: black;
+	color: #222222;
 	font-weight: 200;
 	font-style: italic;
 	padding: 0.1em 0.25em;
