@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { initializeKeyword, cipher } from "../utils";
+import Icon from "./Icon";
 import Input from "./Input";
 import ModeToggle from "./ModeToggle";
 
@@ -47,6 +48,7 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 						contentType="source"
 						step={step}
 					/>
+					<Icon type={mode === "encrypt" ? "lock-open" : "lock-closed"} />
 				</Label>
 				<Label>
 					Encryption key
@@ -56,6 +58,7 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 						contentType="key"
 						step={step}
 					/>
+					<Icon type="key" />
 				</Label>
 				<Label>
 					{mode === "encrypt" ? "Encrypted text" : "Decrypted text"}
@@ -64,6 +67,7 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 						contentType="result"
 						disabled
 					/>
+					<Icon type={mode === "encrypt" ? "lock-closed" : "lock-open"} />
 				</Label>
 			</InputsContainer>
 			<Label>
@@ -88,6 +92,7 @@ const Container = styled.div`
 `;
 
 const Label = styled.label`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 1rem;
