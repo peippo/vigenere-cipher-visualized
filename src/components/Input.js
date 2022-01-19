@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const Input = ({ value, onChange, contentType, step, ...props }) => {
+const Input = ({ value, onChange, contentType, step = 0, ...props }) => {
+	const maxLength = 14;
+
 	const handleKeyPress = (event) => {
 		// Backspace, Tab, Enter, Shift, Arrow left, Arrow right
 		const permittedSpecialKeys = [8, 9, 13, 16, 37, 39];
@@ -72,7 +74,7 @@ const Input = ({ value, onChange, contentType, step, ...props }) => {
 		<Wrapper
 			contentType={contentType}
 			style={{
-				"--left": `${indicatorSteps * 36}px`,
+				"--left": `calc(${indicatorSteps} * var(--input-cell-size))`,
 			}}
 		>
 			<StyledInput
@@ -80,7 +82,7 @@ const Input = ({ value, onChange, contentType, step, ...props }) => {
 				value={value}
 				onChange={onChange}
 				onKeyDown={handleKeyPress}
-				maxLength="14"
+				maxLength={maxLength}
 				{...props}
 			/>
 		</Wrapper>
@@ -110,15 +112,16 @@ const Wrapper = styled.div`
 
 const StyledInput = styled.input`
 	width: 100%;
+	max-width: ${(props) => `calc(var(--input-cell-size) * ${props.maxLength})`};
 	color: ${(props) => props.theme.text};
 	border: 1px solid ${(props) => props.theme.inputBorder};
 	background: ${(props) =>
 		`linear-gradient(to left, ${props.theme.inputBorder} 1px, transparent 0)`};
 	background-size: ${(props) => props.theme.inputCellSize} 1px;
-	font-size: 16px;
+	font-size: var(--input-font-size);
 	font-family: var(--heading-font-family);
-	letter-spacing: ${(props) => `calc(${props.theme.inputCellSize} / 1.36)`};
-	text-indent: 11px;
+	letter-spacing: var(--input-letter-spacing);
+	text-indent: var(--input-text-indent);
 	text-transform: uppercase;
 	height: ${(props) => props.theme.inputCellSize};
 	position: relative;

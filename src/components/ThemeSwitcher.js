@@ -30,7 +30,7 @@ const Switch = styled.div`
 	position: absolute;
 	min-width: 150px;
 	text-align: center;
-	top: 20px;
+	top: var(--body-border-width);
 	right: 30px;
 	padding: 5px 10px;
 	border-radius: 0 0 5px 5px;

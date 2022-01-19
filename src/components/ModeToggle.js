@@ -48,8 +48,13 @@ const Container = styled.nav`
 `;
 
 const Title = styled.p`
-	color: #f0f0f0;
-	margin-right: 1rem;
+	display: none;
+
+	@media (min-width: 600px) {
+		color: #f0f0f0;
+		margin-right: 1rem;
+		display: inline-flex;
+	}
 `;
 
 const Label = styled.label`

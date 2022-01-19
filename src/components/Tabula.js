@@ -63,7 +63,7 @@ const Table = styled.table`
 	position: relative;
 	border-spacing: 0;
 	text-align: center;
-	font-size: 13px;
+	font-size: var(--table-font-size);
 	border-collapse: collapse;
 	line-height: 0;
 
@@ -128,20 +128,20 @@ const Table = styled.table`
 `;
 
 const Cell = styled.td`
-	width: ${(props) => props.theme.cellSize};
-	height: ${(props) => props.theme.cellSize};
+	width: var(--cell-size);
+	height: var(--cell-size);
 	padding: 0;
 	margin: 0;
 `;
 
 const Row = styled.tr`
-	height: ${(props) => props.theme.cellSize};
+	height: var(--cell-size);
 `;
 
 const HeaderCell = styled.th`
 	position: relative;
-	width: ${(props) => props.theme.cellSize};
-	height: ${(props) => props.theme.cellSize};
+	width: var(--cell-size);
+	height: var(--cell-size);
 
 	&:after {
 		content: "";
@@ -169,8 +169,8 @@ const ColumnHeaderCell = styled(HeaderCell)`
 				position: absolute;
 				left: 0;
 				top: 0;
-				width: ${(props) => props.theme.cellSize};
-				height: ${(props) => props.theme.cellSize};
+				width: var(--cell-size);
+				height: var(--cell-size);
 				border: 2px solid ${(props) => props.theme.resultHighlight};
 				transform: scale(1.5);
 				border-radius: 1000px;
@@ -185,7 +185,7 @@ const ColumnHeaderCell = styled(HeaderCell)`
 			&:after {
 				top: 100%;
 				left: 0;
-				width: ${(props) => props.theme.cellSize};
+				width: var(--cell-size);
 				height: ${(props) =>
 					`calc(var(--indicatorHeight) * ${props.theme.cellSize})`};
 			}
@@ -215,7 +215,7 @@ const RowHeaderCell = styled(HeaderCell)`
 			&:after {
 				top: 0;
 				left: 100%;
-				height: ${(props) => props.theme.cellSize};
+				height: var(--cell-size);
 				width: ${(props) =>
 					`calc(var(--indicatorWidth) * ${props.theme.cellSize})`};
 			}

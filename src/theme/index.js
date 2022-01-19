@@ -6,16 +6,16 @@ export const GlobalStyles = createGlobalStyle`
 		background: ${({ theme }) =>
 			`repeating-linear-gradient( -45deg, ${theme.bodyStripe}, ${theme.bodyStripe} 5px, ${theme.body} 5px, ${theme.body} 25px )`};
         color: ${({ theme }) => theme.text};
-        border: 20px solid ${({ theme }) => theme.bodyBorder};
+        border: var(--body-border-width) solid ${({ theme }) =>
+				theme.bodyBorder};
         padding: 1rem;
     }
 `;
 
 const generalStyles = {
-	cellSize: "20px",
-	containerWidth: "540px", // Alphabet count * cellSize
-	inputCellSize: "36px",
-	rangeThumbSize: "18px",
+	cellSize: "var(--cell-size)",
+	inputCellSize: "var(--input-cell-size)",
+	rangeThumbSize: "var(--range-thumb-size)",
 	themeColor: "var(--theme-color-primary)",
 };
 

@@ -62,6 +62,13 @@ const Heading = styled.h1`
 	margin-bottom: 0;
 	position: relative;
 	z-index: 5;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	@media (min-width: 600px) {
+		flex-direction: row;
+	}
 `;
 
 const Subtag = styled.span`
@@ -70,6 +77,10 @@ const Subtag = styled.span`
 	font-style: italic;
 	padding: 0.1em 0.25em;
 	position: relative;
+
+	@media (min-width: 600px) {
+		margin-left: 1rem;
+	}
 
 	&:after {
 		content: "";

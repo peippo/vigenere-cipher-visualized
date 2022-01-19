@@ -35,7 +35,7 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 	};
 
 	return (
-		<Container>
+		<>
 			<InputsContainer>
 				<ModeToggle mode={mode} changeMode={changeMode} />
 				<InputRow>
@@ -94,13 +94,9 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 					"--lengthCount": sourceText.length + 1,
 				}}
 			/>
-		</Container>
+		</>
 	);
 };
-
-const Container = styled.div`
-	width: ${(props) => props.theme.containerWidth};
-`;
 
 const InputRow = styled.div`
 	position: relative;

@@ -1,7 +1,17 @@
 :root {
 	--heading-font-family: "IBM Plex Mono", monospace;
 	--heading-font-weight: 400;
+	--body-font-size: 14px;
 	--theme-color-primary: rgb(250, 130, 10);
+
+	--cell-size: 14px;
+	--input-cell-size: 22px;
+	--table-font-size: 11px;
+	--input-font-size: 14px;
+	--input-text-indent: 3px;
+	--input-letter-spacing: 13.6px;
+	--body-border-width: 10px;
+	--range-thumb-size: 14px;
 
 	--color-body-light: rgb(238, 232, 239);
 	--color-body-stripe-light: rgb(242, 236, 243);
@@ -34,6 +44,20 @@
 	--color-mode-switch-background-dark: rgb(23, 27, 30);
 }
 
+@media (min-width: 600px) {
+	:root {
+		--body-font-size: 16px;
+		--cell-size: 20px;
+		--input-cell-size: 36px;
+		--table-font-size: 13px;
+		--input-font-size: 16px;
+		--input-text-indent: 11px;
+		--input-letter-spacing: 26.4px;
+		--body-border-width: 20px;
+		--range-thumb-size: 18px;
+	}
+}
+
 *,
 *::before,
 *::after {
@@ -50,6 +74,7 @@ body {
 	font-family: var(--heading-font-family);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	font-size: var(--body-font-size);
 }
 
 code {
