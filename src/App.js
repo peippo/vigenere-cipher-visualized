@@ -65,8 +65,8 @@ const Heading = styled.h1`
 `;
 
 const Subtag = styled.span`
-	color: #222222;
-	font-weight: 200;
+	color: ${(props) => props.theme.text};
+	font-weight: 300;
 	font-style: italic;
 	padding: 0.1em 0.25em;
 	position: relative;
@@ -78,7 +78,7 @@ const Subtag = styled.span`
 		top: 0;
 		width: 100%;
 		height: 100%;
-		background-color: var(--theme-color-primary);
+		background-color: ${(props) => props.theme.logoBackground};
 		z-index: -1;
 		border-radius: 5px;
 		transform: skew(-9deg);

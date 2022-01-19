@@ -15,6 +15,8 @@
 	--color-input-border-hover-light: rgba(0, 0, 0, 0.5);
 	--color-input-background-light: rgba(255, 255, 255, 1);
 	--color-slider-track-light: rgb(100, 100, 100);
+	--color-logo-background-light: rgb(255, 255, 255);
+	--color-mode-switch-background-light: rgb(48, 48, 48);
 
 	--color-body-dark: rgb(33, 37, 40);
 	--color-body-stripe-dark: rgb(29, 33, 36);
@@ -28,12 +30,19 @@
 	--color-input-border-hover-dark: rgba(255, 255, 255, 0.4);
 	--color-input-background-dark: rgba(0, 0, 0, 1);
 	--color-slider-track-dark: rgb(80, 80, 80);
+	--color-logo-background-dark: rgb(48, 48, 48);
+	--color-mode-switch-background-dark: rgb(23, 27, 30);
 }
 
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100vh;
 }
 
 body {

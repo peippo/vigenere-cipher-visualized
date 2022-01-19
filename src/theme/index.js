@@ -32,6 +32,8 @@ export const lightTheme = {
 	inputBorderHover: "var(--color-input-border-hover-light)",
 	inputBackground: "var(--color-input-background-light)",
 	sliderTrack: "var(--color-slider-track-light)",
+	logoBackground: "var(--color-logo-background-light)",
+	modeSwitchBackground: "var(--color-mode-switch-background-light)",
 	...generalStyles,
 };
 
@@ -48,5 +50,7 @@ export const darkTheme = {
 	inputBorderHover: "var(--color-input-border-hover-dark)",
 	inputBackground: "var(--color-input-background-dark)",
 	sliderTrack: "var(--color-slider-track-dark)",
+	logoBackground: "var(--color-logo-background-dark)",
+	modeSwitchBackground: "var(--color-mode-switch-background-dark)",
 	...generalStyles,
 };

@@ -39,7 +39,7 @@ const ModeToggle = ({ mode, changeMode }) => {
 const Container = styled.nav`
 	margin: 0.25rem 0 1.5rem;
 	padding: 0.5rem;
-	background-color: #303030;
+	background-color: ${(props) => props.theme.modeSwitchBackground};
 	text-align: center;
 	border-radius: 8px;
 	display: flex;
