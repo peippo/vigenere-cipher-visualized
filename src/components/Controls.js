@@ -77,19 +77,23 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 					<Icon type={mode === "encrypt" ? "lock-closed" : "lock-open"} />
 				</InputRow>
 			</InputsContainer>
-			<Label>
-				<Range
-					type="range"
-					min="0"
-					max={sourceText.length}
-					value={step}
-					onChange={(event) => setStep(event.target.value)}
-					step="1"
-					style={{
-						"--lengthCount": sourceText.length + 1,
-					}}
-				/>
+			<Label htmlFor="input-range">
+				<span className="screen-reader-text">
+					Slide through the cipher process
+				</span>
 			</Label>
+			<Range
+				id="input-range"
+				type="range"
+				min="0"
+				max={sourceText.length}
+				value={step}
+				onChange={(event) => setStep(event.target.value)}
+				step="1"
+				style={{
+					"--lengthCount": sourceText.length + 1,
+				}}
+			/>
 		</Container>
 	);
 };

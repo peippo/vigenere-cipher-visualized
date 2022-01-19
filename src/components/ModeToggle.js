@@ -6,7 +6,7 @@ const ModeToggle = ({ mode, changeMode }) => {
 	};
 
 	return (
-		<Container>
+		<Container aria-label="Select cipher mode">
 			<Title>MODE:</Title>
 			<InputEncrypt
 				id="encrypt"
@@ -36,7 +36,7 @@ const ModeToggle = ({ mode, changeMode }) => {
 	);
 };
 
-const Container = styled.div`
+const Container = styled.nav`
 	margin: 0.25rem 0 1.5rem;
 	padding: 0.5rem;
 	background-color: #303030;
