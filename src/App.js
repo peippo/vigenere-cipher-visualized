@@ -46,6 +46,7 @@ const Container = styled.article`
 	border: 1px solid ${(props) => props.theme.bodyStripe};
 	padding: 1rem;
 	border-radius: 20px;
+	margin-bottom: 2rem;
 `;
 
 const Header = styled.header`

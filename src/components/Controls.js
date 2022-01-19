@@ -126,6 +126,7 @@ const Range = styled.input`
 		outline: none;
 	}
 
+	/* Webkit */
 	&::-webkit-slider-thumb {
 		-webkit-appearance: none;
 		width: ${(props) => props.theme.rangeThumbSize};
@@ -144,6 +145,33 @@ const Range = styled.input`
 	}
 
 	&::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 6px;
+		cursor: pointer;
+		background-color: ${(props) => props.theme.sliderTrack};
+		border-radius: 20px;
+		border: 0;
+	}
+
+	/* Firefox */
+	&::-moz-range-thumb {
+		width: 5px;
+		height: 0;
+		border-bottom: 20px solid var(--theme-color-primary);
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 0;
+		cursor: pointer;
+		position: relative;
+		background: none;
+		border-radius: 10px;
+
+		&:hover {
+			cursor: ew-resize;
+		}
+	}
+
+	&::-moz-range-track {
 		width: 100%;
 		height: 6px;
 		cursor: pointer;

@@ -63,8 +63,9 @@ const Table = styled.table`
 	position: relative;
 	border-spacing: 0;
 	text-align: center;
-	font-size: 14px;
+	font-size: 13px;
 	border-collapse: collapse;
+	line-height: 0;
 
 	& * {
 		position: relative;
