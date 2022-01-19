@@ -55,6 +55,7 @@ const Header = styled.header`
 
 const Heading = styled.h1`
 	color: var(--theme-color-primary);
+	font-weight: var(--heading-font-weight);
 	text-align: center;
 	margin-top: 3rem;
 `;
