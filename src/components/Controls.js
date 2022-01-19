@@ -38,37 +38,44 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 		<Container>
 			<InputsContainer>
 				<ModeToggle mode={mode} changeMode={changeMode} />
-				<Label>
-					{mode === "encrypt"
-						? "Plain source text"
-						: "Encrypted source text"}
+				<InputRow>
+					<Label htmlFor="input-source">
+						{mode === "encrypt"
+							? "Plain source text"
+							: "Encrypted source text"}
+					</Label>
 					<Input
+						id="input-source"
 						value={sourceText}
 						onChange={(event) => handleChange(event, setSourceText)}
 						contentType="source"
 						step={step}
 					/>
 					<Icon type={mode === "encrypt" ? "lock-open" : "lock-closed"} />
-				</Label>
-				<Label>
-					Encryption key
+				</InputRow>
+				<InputRow>
+					<Label htmlFor="input-key">Encryption key</Label>
 					<Input
+						id="input-key"
 						value={keyword}
 						onChange={(event) => handleChange(event, setKeyword)}
 						contentType="key"
 						step={step}
 					/>
 					<Icon type="key" />
-				</Label>
-				<Label>
-					{mode === "encrypt" ? "Encrypted text" : "Decrypted text"}
+				</InputRow>
+				<InputRow>
+					<Label htmlFor="input-result">
+						{mode === "encrypt" ? "Encrypted text" : "Decrypted text"}
+					</Label>
 					<Input
+						id="input-result"
 						value={visibleResult ? visibleResult : ""}
 						contentType="result"
 						disabled
 					/>
 					<Icon type={mode === "encrypt" ? "lock-closed" : "lock-open"} />
-				</Label>
+				</InputRow>
 			</InputsContainer>
 			<Label>
 				<Range
@@ -91,11 +98,14 @@ const Container = styled.div`
 	width: ${(props) => props.theme.containerWidth};
 `;
 
-const Label = styled.label`
+const InputRow = styled.div`
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 1rem;
+`;
+
+const Label = styled.label`
 	font-size: 0.875rem;
 	text-transform: uppercase;
 `;
