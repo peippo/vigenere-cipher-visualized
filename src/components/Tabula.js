@@ -125,6 +125,7 @@ const Table = styled.table`
 			th,
 			th:after {
 				background-color: transparent !important;
+				color: inherit;
 			}
 		`};
 `;
