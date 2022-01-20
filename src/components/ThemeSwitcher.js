@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ThemeSwitcher = ({ theme, toggleTheme }) => {
-	const label = theme === "light" ? "☀️ Light mode" : "🌙 Dark mode";
+	const label = theme === "dark" ? "☀️ Light mode" : "🌙 Dark mode";
 
 	return (
 		<Button onClick={toggleTheme}>
