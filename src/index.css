@@ -66,6 +66,10 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: var(--body-font-size);
+}
+
 html,
 body {
 	min-height: 100vh;
@@ -76,7 +80,6 @@ body {
 	font-family: var(--heading-font-family);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-size: var(--body-font-size);
 }
 
 code {

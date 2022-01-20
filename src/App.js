@@ -4,18 +4,20 @@ import { GlobalStyles, lightTheme, darkTheme } from "./theme";
 import Controls from "./components/Controls";
 import Tabula from "./components/Tabula";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import useTheme from "./hooks/useTheme";
 
 const App = () => {
 	const [result, setResult] = useState();
 	const [step, setStep] = useState(0);
-	const [theme, setTheme] = useState("light");
 	const [mode, setMode] = useState("encrypt");
-	const isDarkTheme = theme === "dark";
+	const [theme, toggleTheme, isLoadingTheme] = useTheme();
+
+	if (isLoadingTheme) return <></>;
 
 	return (
-		<ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+		<ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
 			<GlobalStyles />
-			<ThemeSwitcher isDarkTheme={isDarkTheme} setTheme={setTheme} />
+			<ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
 
 			<Header>
 				<Heading>
