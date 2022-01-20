@@ -20,6 +20,7 @@ const generalStyles = {
 };
 
 export const lightTheme = {
+	currentTheme: "light",
 	body: "var(--color-body-light)",
 	bodyStripe: "var(--color-body-stripe-light)",
 	text: "var(--color-text-light)",
@@ -38,6 +39,7 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
+	currentTheme: "dark",
 	body: "var(--color-body-dark)",
 	bodyStripe: "var(--color-body-stripe-dark)",
 	text: "var(--color-text-dark)",

@@ -33,10 +33,10 @@
 	--color-body-stripe-dark: rgb(29, 33, 36);
 	--color-text-dark: rgb(210, 210, 210);
 	--color-body-border-dark: rgb(23, 27, 30);
-	--color-source-highlight-dark: rgb(43, 89, 0);
-	--color-key-highlight-dark: rgb(0, 70, 104);
+	--color-source-highlight-dark: rgb(126, 255, 148);
+	--color-key-highlight-dark: rgb(254, 255, 188);
 	--color-result-highlight-dark: var(--theme-color-primary);
-	--color-indicator-bar-dark: rgba(255, 255, 255, 0.1);
+	--color-indicator-bar-dark: rgba(255, 255, 255, 0.2);
 	--color-input-border-dark: rgba(255, 255, 255, 0.2);
 	--color-input-border-hover-dark: rgba(255, 255, 255, 0.4);
 	--color-input-background-dark: rgba(0, 0, 0, 1);

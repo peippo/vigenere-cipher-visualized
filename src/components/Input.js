@@ -126,6 +126,8 @@ const StyledInput = styled.input`
 	height: ${(props) => props.theme.inputCellSize};
 	position: relative;
 	z-index: 1;
+	mix-blend-mode: ${(props) =>
+		props.theme.currentTheme === "dark" ? "exclusion" : "unset"};
 
 	&:hover:not(:disabled):not(:focus) {
 		border: 1px solid ${(props) => props.theme.inputBorderHover};

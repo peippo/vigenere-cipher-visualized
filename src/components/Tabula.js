@@ -69,7 +69,7 @@ const Table = styled.table`
 
 	& * {
 		position: relative;
-		z-index: 1;
+		z-index: ${(props) => (props.theme.currentTheme === "dark" ? "0" : "1")};
 	}
 
 	${(props) =>
@@ -109,6 +109,8 @@ const Table = styled.table`
 				width: ${(props) => props.theme.cellSize};
 				height: ${(props) => props.theme.cellSize};
 				background-color: ${(props) => props.theme.sourceHighlight};
+				mix-blend-mode: ${(props) =>
+					props.theme.currentTheme === "dark" ? "exclusion" : "unset"};
 			}
 		`};
 
@@ -158,6 +160,13 @@ const ColumnHeaderCell = styled(HeaderCell)`
 		css`
 			background-color: ${(props) =>
 				props.isCurrent && props.theme.keyHighlight};
+		`};
+
+	${(props) =>
+		props.mode === "encrypt" &&
+		props.isCurrent &&
+		css`
+			color: var(--color-text-light);
 		`};
 
 	${(props) =>
@@ -212,6 +221,8 @@ const RowHeaderCell = styled(HeaderCell)`
 	${(props) =>
 		props.isCurrent &&
 		css`
+			color: var(--color-text-light);
+
 			&:after {
 				top: 0;
 				left: 100%;
