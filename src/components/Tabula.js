@@ -12,6 +12,8 @@ const Tabula = ({ indices, step, mode }) => {
 				"--currentStep": Number(step),
 				"--indicatorRow": stepIndices.row + 1,
 				"--indicatorColumn": stepIndices.column + 1,
+				"--indicatorHeight": stepIndices.column,
+				"--indicatorWidth": stepIndices.row,
 			}}
 		>
 			<thead>
@@ -24,9 +26,6 @@ const Tabula = ({ indices, step, mode }) => {
 								mode={mode}
 								key={letter}
 								scope="col"
-								style={{
-									"--indicatorHeight": stepIndices.column,
-								}}
 							>
 								{letter}
 							</ColumnHeaderCell>
@@ -42,9 +41,6 @@ const Tabula = ({ indices, step, mode }) => {
 								isCurrent={stepIndices.column === index}
 								mode={mode}
 								scope="row"
-								style={{
-									"--indicatorWidth": stepIndices.row,
-								}}
 							>
 								{alphabet[index]}
 							</RowHeaderCell>
