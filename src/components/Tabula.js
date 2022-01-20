@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
+import useDimensions from "../hooks/useDimensions";
 import { tabulaRecta, alphabet } from "../utils";
 
 const Tabula = ({ indices, step, mode }) => {
 	const stepIndices = indices[step];
+	const [ref, { width, height }] = useDimensions();
 
 	return (
 		<Table
@@ -14,11 +16,13 @@ const Tabula = ({ indices, step, mode }) => {
 				"--indicatorColumn": stepIndices.column + 1,
 				"--indicatorHeight": stepIndices.column,
 				"--indicatorWidth": stepIndices.row,
+				"--actualCellWidth": `${width}px`,
+				"--actualCellHeight": `${height}px`,
 			}}
 		>
 			<thead>
 				<tr>
-					<Cell></Cell>
+					<Cell ref={ref}></Cell>
 					{alphabet.map((letter, index) => {
 						return (
 							<ColumnHeaderCell
@@ -74,14 +78,10 @@ const Table = styled.table`
 			&:after {
 				content: "";
 				position: absolute;
-				left: calc(
-					var(--indicatorRow) * ${(props) => props.theme.cellSize}
-				);
-				top: calc(
-					var(--indicatorColumn) * ${(props) => props.theme.cellSize}
-				);
-				width: ${(props) => props.theme.cellSize};
-				height: ${(props) => props.theme.cellSize};
+				left: calc(var(--indicatorRow) * var(--actualCellWidth));
+				top: calc(var(--indicatorColumn) * var(--actualCellHeight));
+				width: var(--actualCellWidth);
+				height: var(--actualCellHeight);
 				border: 2px solid ${(props) => props.theme.resultHighlight};
 				transform: scale(1.5);
 				border-radius: 1000px;
@@ -96,14 +96,10 @@ const Table = styled.table`
 			&:after {
 				content: "";
 				position: absolute;
-				left: calc(
-					var(--indicatorRow) * ${(props) => props.theme.cellSize}
-				);
-				top: calc(
-					var(--indicatorColumn) * ${(props) => props.theme.cellSize}
-				);
-				width: ${(props) => props.theme.cellSize};
-				height: ${(props) => props.theme.cellSize};
+				left: calc(var(--indicatorRow) * var(--actualCellWidth));
+				top: calc(var(--indicatorColumn) * var(--actualCellHeight));
+				width: var(--actualCellWidth);
+				height: var(--actualCellHeight);
 				background-color: ${(props) => props.theme.sourceHighlight};
 				mix-blend-mode: ${(props) =>
 					props.theme.currentTheme === "dark" ? "exclusion" : "unset"};
@@ -193,7 +189,7 @@ const ColumnHeaderCell = styled(HeaderCell)`
 				left: 0;
 				width: var(--cell-size);
 				height: ${(props) =>
-					`calc(var(--indicatorHeight) * ${props.theme.cellSize})`};
+					`calc(var(--indicatorHeight) * var(--actualCellHeight))`};
 			}
 		`}
 `;
@@ -225,7 +221,7 @@ const RowHeaderCell = styled(HeaderCell)`
 				left: 100%;
 				height: var(--cell-size);
 				width: ${(props) =>
-					`calc(var(--indicatorWidth) * ${props.theme.cellSize})`};
+					`calc(var(--indicatorWidth) * var(--actualCellWidth))`};
 			}
 		`}
 `;
