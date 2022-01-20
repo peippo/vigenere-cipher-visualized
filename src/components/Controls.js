@@ -51,7 +51,10 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 						contentType="source"
 						step={step}
 					/>
-					<Icon type={mode === "encrypt" ? "lock-open" : "lock-closed"} />
+					<Icon
+						type={mode === "encrypt" ? "lock-open" : "lock-closed"}
+						isColored={true}
+					/>
 				</InputRow>
 				<InputRow>
 					<Label htmlFor="input-key">Encryption key</Label>
@@ -62,7 +65,7 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 						contentType="key"
 						step={step}
 					/>
-					<Icon type="key" />
+					<Icon type="key" isColored={true} />
 				</InputRow>
 				<InputRow>
 					<Label htmlFor="input-result">
