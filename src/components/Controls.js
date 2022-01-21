@@ -96,6 +96,7 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 				style={{
 					"--lengthCount": sourceText.length + 1,
 				}}
+				disabled={!keyword}
 			/>
 		</>
 	);
@@ -141,6 +142,7 @@ const Range = styled.input`
 		margin-top: -6px;
 		position: relative;
 		border-radius: 5px;
+		transition: all 0.15s;
 
 		&:hover {
 			cursor: ew-resize;
@@ -181,6 +183,40 @@ const Range = styled.input`
 		background-color: ${(props) => props.theme.sliderTrack};
 		border-radius: 20px;
 		border: 0;
+	}
+
+	&:disabled {
+		&::-webkit-slider-thumb {
+			border-bottom: ${(props) =>
+				`${props.theme.rangeThumbSize} solid ${props.theme.text}`};
+
+			&:hover {
+				cursor: not-allowed;
+			}
+		}
+
+		&::-webkit-slider-runnable-track {
+			opacity: 0.5;
+
+			&:hover {
+				cursor: not-allowed;
+			}
+		}
+
+		&::-moz-range-thumb {
+			border-bottom: ${(props) =>
+				`${props.theme.rangeThumbSize} solid ${props.theme.text}`};
+
+			&:hover {
+				cursor: not-allowed;
+			}
+		}
+
+		&::-moz-range-track {
+			&:hover {
+				cursor: not-allowed;
+			}
+		}
 	}
 `;
 
