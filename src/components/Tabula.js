@@ -131,6 +131,7 @@ const Table = styled.table`
 		props.currentStep === 0 &&
 		css`
 			&:after,
+			&:before,
 			th:before {
 				display: none !important;
 			}
