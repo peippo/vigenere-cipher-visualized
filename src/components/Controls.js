@@ -96,7 +96,7 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 				style={{
 					"--lengthCount": sourceText.length + 1,
 				}}
-				disabled={!keyword}
+				disabled={!keyword || !sourceText}
 			/>
 		</>
 	);
