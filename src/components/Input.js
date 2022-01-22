@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Input = ({ value, onChange, contentType, step = 0, ...props }) => {
 	const maxLength = 14;
@@ -45,20 +45,24 @@ const Wrapper = styled.div`
 	width: 100%;
 	overflow: hidden;
 
-	&:after {
-		content: "";
-		width: ${(props) => props.theme.inputCellSize};
-		height: ${(props) => props.theme.inputCellSize};
-		position: absolute;
-		top: 0;
-		left: var(--left);
-		background-color: ${(props) =>
-			props.contentType === "source"
-				? props.theme.sourceHighlight
-				: props.theme.keyHighlight};
-		z-index: 0;
-		transition: left 0.15s;
-	}
+	${(props) =>
+		props.contentType !== "result" &&
+		css`
+			&:after {
+				content: "";
+				width: ${(props) => props.theme.inputCellSize};
+				height: ${(props) => props.theme.inputCellSize};
+				position: absolute;
+				top: 0;
+				left: var(--left);
+				background-color: ${(props) =>
+					props.contentType === "source"
+						? props.theme.sourceHighlight
+						: props.theme.keyHighlight};
+				z-index: 0;
+				transition: left 0.15s;
+			}
+		`}
 `;
 
 const StyledInput = styled.input`
