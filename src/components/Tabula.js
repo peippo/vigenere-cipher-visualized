@@ -83,7 +83,7 @@ const Table = styled.table`
 	${(props) =>
 		props.mode === "encrypt" &&
 		css`
-			&:after {
+			&:before {
 				content: "";
 				position: absolute;
 				left: calc(var(--indicatorRow) * var(--actualCellWidth));
@@ -94,7 +94,7 @@ const Table = styled.table`
 				transform: scale(1.5);
 				border-radius: 1000px;
 				transition: left 0.15s, top 0.15s;
-				z-index: 1;
+				z-index: 5;
 			}
 		`};
 
@@ -110,14 +110,14 @@ const Table = styled.table`
 				height: var(--actualCellHeight);
 			}
 
-			&:before {
+			&:after {
 				top: calc(var(--indicatorColumn) * var(--actualCellHeight));
 				background-color: ${(props) => props.theme.sourceHighlight};
 				mix-blend-mode: ${(props) =>
 					props.theme.currentTheme === "dark" ? "exclusion" : "unset"};
 			}
 
-			&:after {
+			&:before {
 				top: 0;
 				border: 2px solid ${(props) => props.theme.resultHighlight};
 				transform: scale(1.5);
