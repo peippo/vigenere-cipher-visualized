@@ -22,7 +22,7 @@ const Tabula = ({ indices, step, mode }) => {
 		>
 			<thead>
 				<tr>
-					<Cell ref={ref}></Cell>
+					<Cell></Cell>
 					{alphabet.map((letter, index) => {
 						return (
 							<ColumnHeaderCell
@@ -48,8 +48,16 @@ const Tabula = ({ indices, step, mode }) => {
 							>
 								{alphabet[index]}
 							</RowHeaderCell>
-							{rowArr.map((letter) => {
-								return <Cell key={letter}>{letter}</Cell>;
+							{rowArr.map((letter, cellIndex) => {
+								return (
+									<Cell
+										// Measure actual cell size from the first cell
+										ref={index === 0 && cellIndex === 0 ? ref : null}
+										key={letter}
+									>
+										{letter}
+									</Cell>
+								);
 							})}
 						</Row>
 					);
