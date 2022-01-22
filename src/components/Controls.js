@@ -143,6 +143,8 @@ const Range = styled.input`
 		position: relative;
 		border-radius: 5px;
 		transition: all 0.15s;
+		background: none;
+		box-shadow: none;
 
 		&:hover {
 			cursor: ew-resize;

@@ -8,7 +8,7 @@
 	--input-cell-size: 22px;
 	--table-font-size: 11px;
 	--input-font-size: 14px;
-	--input-text-indent: 3px;
+	--input-text-indent: 6px;
 	--input-letter-spacing: 13.6px;
 	--body-border-width: 10px;
 	--range-thumb-size: 14px;
@@ -52,7 +52,7 @@
 		--input-cell-size: 36px;
 		--table-font-size: 13px;
 		--input-font-size: 16px;
-		--input-text-indent: 11px;
+		--input-text-indent: 14px;
 		--input-letter-spacing: 26.4px;
 		--body-border-width: 20px;
 		--range-thumb-size: 18px;

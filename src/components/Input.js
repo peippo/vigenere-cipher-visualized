@@ -81,6 +81,7 @@ const StyledInput = styled.input`
 	height: ${(props) => props.theme.inputCellSize};
 	position: relative;
 	z-index: 1;
+	padding: 0;
 	mix-blend-mode: ${(props) =>
 		props.theme.currentTheme === "dark" ? "exclusion" : "unset"};
 
