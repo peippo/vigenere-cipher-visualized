@@ -101,16 +101,29 @@ const Table = styled.table`
 	${(props) =>
 		props.mode === "decrypt" &&
 		css`
+			&:before,
 			&:after {
 				content: "";
 				position: absolute;
 				left: calc(var(--indicatorRow) * var(--actualCellWidth));
-				top: calc(var(--indicatorColumn) * var(--actualCellHeight));
 				width: var(--actualCellWidth);
 				height: var(--actualCellHeight);
+			}
+
+			&:before {
+				top: calc(var(--indicatorColumn) * var(--actualCellHeight));
 				background-color: ${(props) => props.theme.sourceHighlight};
 				mix-blend-mode: ${(props) =>
 					props.theme.currentTheme === "dark" ? "exclusion" : "unset"};
+			}
+
+			&:after {
+				top: 0;
+				border: 2px solid ${(props) => props.theme.resultHighlight};
+				transform: scale(1.5);
+				border-radius: 1000px;
+				transition: left 0.15s, top 0.15s;
+				z-index: 5;
 			}
 		`};
 
@@ -168,25 +181,6 @@ const ColumnHeaderCell = styled(HeaderCell)`
 		props.isCurrent &&
 		css`
 			color: var(--color-text-light);
-		`};
-
-	${(props) =>
-		props.mode === "decrypt" &&
-		props.isCurrent &&
-		css`
-			&:before {
-				content: "";
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: var(--cell-size);
-				height: var(--cell-size);
-				border: 2px solid ${(props) => props.theme.resultHighlight};
-				transform: scale(1.5);
-				border-radius: 1000px;
-				transition: left 0.15s;
-				z-index: 1;
-			}
 		`};
 
 	${(props) =>
