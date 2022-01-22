@@ -15,59 +15,10 @@ const Input = ({ value, onChange, contentType, step = 0, ...props }) => {
 		}
 	};
 
-	// TODO: :D
-	let indicatorSteps = step - 1;
-
-	if (step > value.length) {
-		indicatorSteps = step - value.length - 1;
-	}
-
-	if (step > value.length * 2) {
-		indicatorSteps = step - value.length * 2 - 1;
-	}
-
-	if (step > value.length * 3) {
-		indicatorSteps = step - value.length * 3 - 1;
-	}
-
-	if (step > value.length * 4) {
-		indicatorSteps = step - value.length * 4 - 1;
-	}
-
-	if (step > value.length * 5) {
-		indicatorSteps = step - value.length * 5 - 1;
-	}
-
-	if (step > value.length * 6) {
-		indicatorSteps = step - value.length * 6 - 1;
-	}
-
-	if (step > value.length * 7) {
-		indicatorSteps = step - value.length * 7 - 1;
-	}
-
-	if (step > value.length * 8) {
-		indicatorSteps = step - value.length * 8 - 1;
-	}
-
-	if (step > value.length * 9) {
-		indicatorSteps = step - value.length * 9 - 1;
-	}
-
-	if (step > value.length * 10) {
-		indicatorSteps = step - value.length * 10 - 1;
-	}
-
-	if (step > value.length * 11) {
-		indicatorSteps = step - value.length * 11 - 1;
-	}
-
-	if (step > value.length * 12) {
-		indicatorSteps = step - value.length * 12 - 1;
-	}
-
-	if (step > value.length * 13) {
-		indicatorSteps = step - value.length * 13 - 1;
+	// Loop key step indicator
+	let indicatorSteps = (step % value.length) - 1;
+	if (step && step % value.length === 0) {
+		indicatorSteps = value.length - 1;
 	}
 
 	return (

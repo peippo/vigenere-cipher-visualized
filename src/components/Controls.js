@@ -91,7 +91,7 @@ const Controls = ({ result, setResult, step, setStep, mode, setMode }) => {
 				min="0"
 				max={sourceText.length}
 				value={step}
-				onChange={(event) => setStep(event.target.value)}
+				onChange={(event) => setStep(Number(event.target.value))}
 				step="1"
 				style={{
 					"--lengthCount": sourceText.length + 1,
